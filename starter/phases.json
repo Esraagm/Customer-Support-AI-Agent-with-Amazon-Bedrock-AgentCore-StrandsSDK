@@ -1,0 +1,27 @@
+﻿[
+    {
+        "phaseType": "SUBMITTED",
+        "phaseStatus": "SUCCEEDED",
+        "startTime": "2026-10-19T10:07:40.649000+03:00",
+        "endTime": "2026-10-19T10:07:40.728000+03:00",
+        "durationInSeconds": 0
+    },
+    {
+        "phaseType": "QUEUED",
+        "phaseStatus": "SUCCEEDED",
+        "startTime": "2026-10-19T10:07:40.728000+03:00",
+        "endTime": "2026-10-19T10:07:41.374000+03:00",
+        "durationInSeconds": 0
+    },
+    {
+        "phaseType": "PROVISIONING",
+        "phaseStatus": "STOPPED",
+        "startTime": "2026-10-19T10:07:41.374000+03:00",
+        "endTime": "2026-10-19T10:07:43.721000+03:00",
+        "durationInSeconds": 2
+    },
+    {
+        "phaseType": "COMPLETED",
+        "startTime": "2026-10-19T10:07:43.721000+03:00"
+    }
+]

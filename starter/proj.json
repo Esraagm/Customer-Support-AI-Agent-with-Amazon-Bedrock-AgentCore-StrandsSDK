@@ -1,0 +1,12 @@
+﻿{
+    "env": {
+        "type": "ARM_CONTAINER",
+        "image": "aws/codebuild/amazonlinux2-aarch64-standard:3.0",
+        "computeType": "BUILD_GENERAL1_MEDIUM",
+        "environmentVariables": [],
+        "privilegedMode": true,
+        "imagePullCredentialsType": "CODEBUILD"
+    },
+    "role": "arn:aws:iam::217638960680:role/AmazonBedrockAgentCoreSDKCodeBuild-us-east-1-b01d29b319",
+    "vpc": null
+}

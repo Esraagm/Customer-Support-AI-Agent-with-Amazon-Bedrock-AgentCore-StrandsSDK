@@ -1,0 +1,38 @@
+=== Test 5: loyalty_discount ===
+
+--- session: t5
+REQUEST: {"prompt": "I'm a Gold member with 4250 points. Calculate my loyalty discount for a $200 order of Amazon devices.", "customer_id": "CUST-123", "session_id": "t5"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 562dd40b-f893-4027-9fb1-cde81eb95436                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Based on your Gold membership status and 4,250 loyalty points, here's your 
+loyalty discount calculation for the $200 Amazon devices order:
+
+**Loyalty Discount Summary:**
+- **Points Redeemed:** 4,000 points ($40 value)
+- **Gold Tier Discount:** 10% ($16.00)
+- **Total Savings:** $56.00
+- **Final Order Total:** $144.00
+- **Points Earned on Purchase:** 288 points
+- **Remaining Points Balance:** 538 points
+
+Your order of Amazon devices will therefore cost **$144.00** after applying 
+both your points redemption and Gold tier discount, saving you a total of 
+**$56.00**.
+

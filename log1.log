@@ -1,0 +1,248 @@
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> agentcore deploy --local-build
+
+⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on Amazon Bedrock AgentCore.
+   New Bedrock AgentCore features are only accessible in the AgentCore CLI.
+
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
+   To install the AgentCore CLI: npm install -g @aws/agentcore
+   To import existing agents, run: agentcore import
+   Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
+
+🔧 Launching Bedrock AgentCore (local-build mode - NEW!)...
+   • Build container locally with Docker
+   • Deploy to Bedrock AgentCore cloud runtime
+   • Requires Docker/Finch/Podman to be installed
+   • Use when you need custom build control
+
+Memory disabled - skipping memory creation
+Memory disabled - skipping memory creation
+Launching Bedrock AgentCore agent 'esraa' to cloud
+Using build directory: C:\MyEnviro\ML\Project2\cd14763-project-starter\starter
+Using image tag: 20261019-093329-896
+⠋ Launching Bedrock AgentCore...Docker image built: bedrock_agentcore-esraa:20261019-093329-896
+Uploading to ECR...
+Using ECR repository from config: 217638960680.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-esraa
+ECR repository ready: 217638960680.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-esraa
+Using execution role from config: arn:aws:iam::217638960680:role/AmazonBedrockAgentCoreSDKRuntime-us-east-1-b01d29b319
+⠸ Launching Bedrock AgentCore...Authenticating with registry...
+⠼ Launching Bedrock AgentCore...Registry authentication successful
+Tagging image: bedrock_agentcore-esraa:20261019-093329-896 -> 217638960680.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-esraa:20261019-093329-896
+⠦ Launching Bedrock AgentCore...Pushing image to registry...
+⠧ Launching Bedrock AgentCore...The push refers to repository [217638960680.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-esraa]
+be9fc83da2f5: Pushed 
+3937dc06a278: Pushed 
+19e3642024e7: Layer already exists 
+0a85de4196d6: Layer already exists 
+d3d5d8ab26d2: Layer already exists 
+bad0ddb8198e: Layer already exists 
+5d3d91ef396f: Layer already exists 
+0de37f8e0ae5: Layer already exists 
+6916eb5976cf: Layer already exists 
+25a559035c9b: Layer already exists 
+0a924880c95f: Pushed 
+4ab2ab52f4e7: Layer already exists 
+⠦ Launching Bedrock AgentCore...20261019-093329-896: digest: sha256:7e02b002b7a5a6dcc5560bbabff1875f588ef99f5567ab739a6015bb0e0ba968 size: 856
+Image pushed successfully
+Image uploaded to ECR: 217638960680.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-esraa:20261019-093329-896
+Deploying to Bedrock AgentCore...
+⠹ Launching Bedrock AgentCore...⚠️ Session ID will be reset to connect to the updated agent. The previous agent remains accessible via the original session ID: 99bce8b2-aeb4-4391-8620-90717131211c
+Agent created/updated: arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT
+Observability is enabled, configuring observability components...
+⠙ Launching Bedrock AgentCore...CloudWatch Logs resource policy already configured
+⠧ Launching Bedrock AgentCore...X-Ray trace destination already configured
+⠏ Launching Bedrock AgentCore...X-Ray trace segment destination is ACTIVE
+⠹ Launching Bedrock AgentCore...X-Ray indexing rule already configured
+Transaction Search already fully configured
+⠙ Launching Bedrock AgentCore...ObservabilityDeliveryManager initialized for region: us-east-1, account: 217638960680
+✅ Logs auto-created by AWS for runtime/esraa-oUBTfv8UUT
+⠋ Launching Bedrock AgentCore...✅ Traces delivery enabled for runtime/esraa-oUBTfv8UUT
+Observability enabled for runtime/esraa-oUBTfv8UUT - logs: True, traces: True
+✅ X-Ray traces delivery enabled for agent esraa-oUBTfv8UUT
+🔍 GenAI Observability Dashboard:
+   https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-observability/agent-core
+Polling for endpoint to be ready...
+⠸ Launching Bedrock AgentCore...Agent endpoint: arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT/runtime-endpoint/DEFAULT
+╭─────────────────────────────────────────────────────────────── Local Build Success ────────────────────────────────────────────────────────────────╮
+│ Agent Details:                                                                                                                                     │
+│ Agent Name: esraa                                                                                                                                  │
+│ Agent ARN: arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT                                                               │
+│ ECR URI: 217638960680.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-esraa:20261019-093329-896                                                  │
+│                                                                                                                                                    │
+│ 🔧 Container deployed to Bedrock AgentCore                                                                                                         │
+│                                                                                                                                                    │
+│ Next Steps:                                                                                                                                        │
+│    agentcore status                                                                                                                                │
+│    agentcore invoke '{"prompt": "Hello"}'                                                                                                          │
+│                                                                                                                                                    │
+│ 📋 CloudWatch Logs:                                                                                                                                │
+│    /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT --log-stream-name-prefix "2026/10/19/[runtime-logs]"                                   │
+│    /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT --log-stream-names "otel-rt-logs"                                                      │
+│                                                                                                                                                    │
+│ 💡 Tail logs with:                                                                                                                                 │
+│    aws logs tail /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow            │
+│    aws logs tail /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h          │
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+⚠️ Recommendation: The Starter Toolkit CLI is no longer supported.
+   Please use the AgentCore CLI (@aws/agentcore) to create, develop, and deploy agents on Amazon Bedrock AgentCore.
+   New Bedrock AgentCore features are only accessible in the AgentCore CLI.
+
+   To uninstall this starter toolkit, run: pip uninstall bedrock-agentcore-starter-toolkit
+   To install the AgentCore CLI: npm install -g @aws/agentcore
+   To import existing agents, run: agentcore import
+   Set AGENTCORE_SUPPRESS_RECOMMENDATION=1 to silence this warning.
+
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> python run_memory_test.py
+=== Test 4: long-term memory (memory cs_agent_memory-DkRmDQ3zRP, customer CUST-123) ===
+Unique preference value used: magenta
+
+Strategies / namespaces:
+  - SEMANTIC [ACTIVE] -> cs_agent/CUST-123/facts
+  - USER_PREFERENCE [ACTIVE] -> cs_agent/CUST-123/preferences
+
+--- SESSION A (mem-a-1792402446)
+REQUEST: {"prompt": "Please remember my delivery preferences: I always want my orders left at the side gate and gift-wrapped in magenta paper.", "customer_id": "CUST-123", "session_id": "mem-a-1792402446"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 7c981d94-2468-4102-bb95-fd964cedec09                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Thank you for your patience, Jane. I've processed your request for order 
+ORD-002 (Kindle Paperwhite):
+
+✅ **Refund Approved**  
+• Amount: $139.99  
+• Status: Approved  
+• Credit will appear in your account in 3-5 business days  
+• Refund ID: REF-8RHXNQ2M  
+
+🚚 **Return Label Issued**  
+• Carrier: UPS  
+• Label URL: (https://returns.amazon.com/label/ORD-002)  
+• Valid until: November 18, 2026  
+
+Regarding your delivery preferences for future orders:  
+• **Delivery Instruction:** Packages will be left at the side gate  
+• **Packaging:** All orders will be gift-wrapped in magenta paper  
+
+I've noted these preferences in your account. All future e-reader orders (your 
+preferred category) will follow these instructions automatically.
+
+Would you like me to check the status of your other order ORD-001 (shipped via 
+UPS, tracking TRK987654321, estimated delivery Oct 21)?
+
+Saved events in session A: 1
+
+Waiting for memory extraction (up to 480s)...
+   ...20s, 7 record(s), none with 'magenta' yet
+   ...40s, 7 record(s), none with 'magenta' yet
+   ...60s, 7 record(s), none with 'magenta' yet
+   ...80s, 7 record(s), none with 'magenta' yet
+   ...100s, 7 record(s), none with 'magenta' yet
+   ...120s, 7 record(s), none with 'magenta' yet
+   ...140s, 7 record(s), none with 'magenta' yet
+Memory record found after ~140s:
+  [SEMANTIC] namespace=cs_agent/CUST-123/facts
+     The user's name is Jane Smith. She prefers all delivery orders to be left at the side gate and all orders to be gift-wrapped in magenta paper.
+
+--- SESSION B (mem-b-1792402446) - new session, value NOT repeated
+REQUEST: {"prompt": "Which gift-wrap paper color and delivery spot do I prefer for my orders? Answer from what you already know about me.", "customer_id": "CUST-123", "session_id": "mem-b-1792402446"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 5511e351-c07f-4161-b1a4-cdb51730126c                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Hello Jane! Based on your customer profile and preferences:
+
+**Your gift-wrap paper color preference:** Magenta paper  
+**Your delivery spot preference:** Side gate
+
+These preferences are noted in your customer context, so our team will ensure 
+all future orders are gift-wrapped in magenta paper and left at your side gate.
+
+If you ever need to update these preferences, just let us know!
+
+
+RESULT: PASS - session B recalled magenta
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> python test_loyalty_tool.py   
+[sandbox success (structured)] {"order_total": 200.0, "tier": "Gold", "product_category": "device", "points_redeemed": 4000, "points_value": 40.0, "tier_discount_pct": 10.0, "tier_discount": 16.0, "final_total": 144.0, "total_savings": 56.0, "points_earned": 288, "remaining_points": 538, "fallback": false}
+[sandbox success (text-only)] {"order_total": 200.0, "tier": "Gold", "product_category": "device", "points_redeemed": 4000, "points_value": 40.0, "tier_discount_pct": 10.0, "tier_discount": 16.0, "final_total": 144.0, "total_savings": 56.0, "points_earned": 288, "remaining_points": 538, "fallback":false}
+[sandbox Silver standard] {"order_total": 100.0, "tier": "Silver", "product_category": "standard", "points_redeemed": 500, "points_value": 5.0, "tier_discount_pct": 0.0, "tier_discount": 0.0, "final_total": 95.0, "total_savings": 5.0, "points_earned": 95, "remaining_points": 485, "fallback": false}
+[sandbox cap boundary] {"order_total": 100.0, "tier": "Platinum", "product_category": "fresh", "points_redeemed": 5000, "points_value": 50.0, "tier_discount_pct": 15.0, "tier_discount": 7.5, "final_total": 42.5, "total_savings": 57.5, "points_earned": 212, "remaining_points": 95212, "fallback": false}
+WARNING:CSAI_Agent:Code Interpreter unavailable, using tier-only fallback: simulated Code Interpreter outage
+[fallback (forced exception)] {"order_total": 200.0, "tier": "Gold", "product_category": "device", "points_redeemed": 0, "points_value": 0.0, "tier_discount_pct": 10.0, "tier_discount": 20.0, "final_total": 180.0, "total_savings": 20.0, "points_earned": 360, "remaining_points": 4610, "fallback": true, "note": "Code Interpreter unavailable; tier discount only, no points redeemed."}
+
+ALL ASSERTIONS PASSED
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> aws logs describe-log-groups --log-group-name-prefix /aws/bedrock-agentcore/runtimes --query "logGroups[].logGroupName" --output text
+/aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT        /aws/bedrock-agentcore/runtimes/harness_support_chatbot-r4ZKplBCo3-DEFAULT           
+ 
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> aws logs tail /aws/bedrock-agentcore/runtimes/harness_support_chatbot-r4ZKplBCo3-DEFAULT --since 30m --filter-pattern "Memory"                      
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> aws iam get-role-policy --role-name AmazonBedrockAgentCoreSDKRuntime-us-east-1-b01d29b319 --policy-name CustomerSupportIntegrations
+{                                                                                                                                                    
+    "RoleName": "AmazonBedrockAgentCoreSDKRuntime-us-east-1-b01d29b319",
+    "PolicyName": "CustomerSupportIntegrations",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "bedrock:Retrieve",
+                "Resource": "arn:aws:bedrock:us-east-1:217638960680:knowledge-base/PZJWBJEXOL"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "bedrock-agentcore:GetMemory",
+                    "bedrock-agentcore:RetrieveMemoryRecords",
+                    "bedrock-agentcore:CreateEvent"
+                ],
+                "Resource": [
+                    "arn:aws:bedrock-agentcore:us-east-1:217638960680:memory/cs_agent_memory-DkRmDQ3zRP",
+                    "arn:aws:bedrock-agentcore:us-east-1:217638960680:memory/cs_agent_memory-DkRmDQ3zRP/*"
+                ]
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "bedrock-agentcore:StartBrowserSession",
+                    "bedrock-agentcore:StopBrowserSession",
+                    "bedrock-agentcore:GetBrowserSession",                                                                                           
+                    "bedrock-agentcore:UpdateBrowserStream",
+                    "bedrock-agentcore:ConnectBrowserAutomationStream"
+                ],
+                "Resource": "arn:aws:bedrock-agentcore:us-east-1:aws:browser/aws.browser.v1"
+            }
+        ]
+    }
+}
+
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> 

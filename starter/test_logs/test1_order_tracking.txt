@@ -1,0 +1,32 @@
+=== Test 1: order_tracking ===
+
+--- session: t1
+REQUEST: {"prompt": "Where is my order ORD-001? Give me the tracking number, carrier and estimated delivery date.", "customer_id": "CUST-123", "session_id": "t1"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: c0256481-706e-4ba3-ae2e-dc50290665b3                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Your order **ORD-001** is currently **SHIPPED** with the following details:
+
+- **Carrier:** UPS  
+- **Tracking Number:** TRK987654321  
+- **Estimated Delivery Date:** October 21, 2026  
+
+You can track your package using the UPS tracking number TRK987654321 on the 
+carrier's website or through your account.
+

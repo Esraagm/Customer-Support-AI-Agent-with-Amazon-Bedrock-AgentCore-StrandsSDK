@@ -1,0 +1,92 @@
+=== Test 4: long-term memory (memory cs_agent_memory-DkRmDQ3zRP, customer CUST-123) ===
+Unique preference value used: cobalt
+
+Strategies / namespaces:
+  - SEMANTIC [ACTIVE] -> cs_agent/CUST-123/facts
+  - USER_PREFERENCE [ACTIVE] -> cs_agent/CUST-123/preferences
+
+--- SESSION A (mem-a-1792403050)
+REQUEST: {"prompt": "Please remember my delivery preferences: I always want my orders left at the side gate and gift-wrapped in cobalt paper.", "customer_id": "CUST-123", "session_id": "mem-a-1792403050"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: df2c6113-2ead-4427-91e1-0efafed02794                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Thank you for confirming your delivery preferences, Jane. I've updated your 
+profile with the following preferences:
+
+**Your Delivery Preferences:**
+- **Delivery Location:** All orders should be left at the side gate
+- **Packaging:** All orders should be gift-wrapped in **cobalt paper** (updated
+from magenta)
+
+These preferences are now saved to your account and will be applied to all 
+future orders. 
+
+I can also see from your order history:
+- **ORD-001** (Wireless Headphones Pro) is currently **SHIPPED** via UPS with 
+tracking number TRK987654321, estimated to arrive on October 21, 2026
+- **ORD-002** (Kindle Paperwhite) was delivered on October 16, 2026
+
+Would you like me to help you with anything else regarding your orders or 
+preferences?
+
+Saved events in session A: 1
+
+Waiting for memory extraction (up to 480s)...
+Memory record found after ~160s:
+  [SEMANTIC] namespace=cs_agent/CUST-123/facts
+     The user's name is Jane Smith. She prefers all delivery orders to be left at the side gate and all orders to be gift-wrapped in cobalt paper.
+  [USER_PREFERENCE] namespace=cs_agent/CUST-123/preferences
+     {"context":"Packaging for received orders","preference":"Always wants orders gift-wrapped in cobalt paper","categories":["delivery","packaging","gift wrapping"]}
+
+--- SESSION B (mem-b-1792403050) - new session, value NOT repeated
+REQUEST: {"prompt": "Which gift-wrap paper color and delivery spot do I prefer for my orders? Answer from what you already know about me.", "customer_id": "CUST-123", "session_id": "mem-b-1792403050"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 025887b3-92dc-4119-a446-0c917a47a53b                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Hello Jane,
+
+Based on your preferences:
+
+**Gift-wrap paper color:** You prefer all orders to be gift-wrapped in **cobalt
+paper**.
+
+**Delivery spot:** You prefer all delivery orders to be left at the **side 
+gate**.
+
+If you need any changes to these preferences or have other questions, just let 
+me know and I'll be happy to help!
+
+
+RESULT: PASS - session B recalled cobalt

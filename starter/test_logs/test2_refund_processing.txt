@@ -1,0 +1,37 @@
+=== Test 2: refund_processing ===
+
+--- session: t2
+REQUEST: {"prompt": "Order ORD-002 (Kindle Paperwhite) arrived damaged. Please process a full refund and send me a return label. In your reply include the refund ID, refund amount, status, return label URL and carrier.", "customer_id": "CUST-123", "session_id": "t2"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 7950510c-3d65-4952-b995-e9e687e96aea                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+```json
+{
+  "refund_id": "REF-XUAI2CN8",
+  "order_id": "ORD-002",
+  "status": "APPROVED",
+  "amount": 139.99,
+  "message": "Refund approved. Credit appears in 3-5 business days.",
+  "created_at": "2026-10-19T09:44:03.104335+00:00",
+  "return_label_url": "https://returns.amazon.com/label/ORD-002",
+  "carrier": "UPS",
+  "valid_until": "2026-11-18"
+}
+```
+

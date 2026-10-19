@@ -1,0 +1,289 @@
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> python run_tests.py                                                                 
+=== Test 1: order_tracking ===                   
+
+--- session: t1
+REQUEST: {"prompt": "Where is my order ORD-001? Give me the tracking number, carrier and estimated delivery date.", "customer_id": "CUST-123", "session_id": "t1"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: c0256481-706e-4ba3-ae2e-dc50290665b3                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Your order **ORD-001** is currently **SHIPPED** with the following details:
+
+- **Carrier:** UPS  
+- **Tracking Number:** TRK987654321  
+- **Estimated Delivery Date:** October 21, 2026  
+
+You can track your package using the UPS tracking number TRK987654321 on the 
+carrier's website or through your account.
+
+
+=== Test 2: refund_processing ===
+
+--- session: t2
+REQUEST: {"prompt": "Order ORD-002 (Kindle Paperwhite) arrived damaged. Please process a full refund and send me a return label. In your reply include the refund ID, refund amount, status, return label URL and carrier.", "customer_id": "CUST-123", "session_id": "t2"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 7950510c-3d65-4952-b995-e9e687e96aea                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+```json
+{
+  "refund_id": "REF-XUAI2CN8",
+  "order_id": "ORD-002",
+  "status": "APPROVED",
+  "amount": 139.99,
+  "message": "Refund approved. Credit appears in 3-5 business days.",
+  "created_at": "2026-10-19T09:44:03.104335+00:00",
+  "return_label_url": "https://returns.amazon.com/label/ORD-002",
+  "carrier": "UPS",
+  "valid_until": "2026-11-18"
+}
+```
+
+
+=== Test 3: knowledge_base_rag ===
+
+--- session: t3
+REQUEST: {"prompt": "What is the return policy for electronics, and how long does a refund to a credit card take?", "customer_id": "CUST-123", "session_id": "t3"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: dc74543e-47c2-4aea-8d8b-360237ca2273                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+### Electronics Return Policy
+
+For electronics purchases on Amazon, the return window is **15 days from the 
+delivery date**. This shorter return period applies specifically to electronic 
+items compared to the standard 30-day return policy for most other products.
+
+### Refund Processing Time
+
+When returning an electronic item and choosing a credit card as your refund 
+method, you can expect:
+
+**Credit or Debit Card Refunds:** 3-5 business days after Amazon processes your
+refund
+
+This means after you initiate the return and Amazon approves your refund 
+request, it typically takes 3-5 business days for the funds to appear back in 
+your credit card account. The exact timing may vary slightly depending on your 
+bank's processing times.
+
+For your recent Kindle Paperwhite order (ORD-002), since you've already 
+received approval for your refund, you should see the $139.99 refund appear on 
+your credit card statement within the next 3-5 business days.
+
+
+=== Test 4: long-term memory (memory cs_agent_memory-DkRmDQ3zRP, customer CUST-123) ===
+Unique preference value used: cobalt
+
+Strategies / namespaces:
+  - SEMANTIC [ACTIVE] -> cs_agent/CUST-123/facts
+  - USER_PREFERENCE [ACTIVE] -> cs_agent/CUST-123/preferences
+
+--- SESSION A (mem-a-1792403050)
+REQUEST: {"prompt": "Please remember my delivery preferences: I always want my orders left at the side gate and gift-wrapped in cobalt paper.", "customer_id": "CUST-123", "session_id": "mem-a-1792403050"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: df2c6113-2ead-4427-91e1-0efafed02794                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Thank you for confirming your delivery preferences, Jane. I've updated your 
+profile with the following preferences:
+
+**Your Delivery Preferences:**
+- **Delivery Location:** All orders should be left at the side gate
+- **Packaging:** All orders should be gift-wrapped in **cobalt paper** (updated
+from magenta)
+
+These preferences are now saved to your account and will be applied to all 
+future orders. 
+
+I can also see from your order history:
+- **ORD-001** (Wireless Headphones Pro) is currently **SHIPPED** via UPS with 
+tracking number TRK987654321, estimated to arrive on October 21, 2026
+- **ORD-002** (Kindle Paperwhite) was delivered on October 16, 2026
+
+Would you like me to help you with anything else regarding your orders or 
+preferences?
+
+Saved events in session A: 1
+
+Waiting for memory extraction (up to 480s)...
+   ...20s, 9 record(s), none with 'cobalt' yet
+   ...40s, 9 record(s), none with 'cobalt' yet
+   ...60s, 9 record(s), none with 'cobalt' yet
+   ...80s, 9 record(s), none with 'cobalt' yet
+   ...100s, 9 record(s), none with 'cobalt' yet
+   ...120s, 8 record(s), none with 'cobalt' yet
+   ...140s, 8 record(s), none with 'cobalt' yet
+   ...160s, 8 record(s), none with 'cobalt' yet
+Memory record found after ~160s:
+  [SEMANTIC] namespace=cs_agent/CUST-123/facts
+     The user's name is Jane Smith. She prefers all delivery orders to be left at the side gate and all orders to be gift-wrapped in cobalt paper.
+  [USER_PREFERENCE] namespace=cs_agent/CUST-123/preferences
+     {"context":"Packaging for received orders","preference":"Always wants orders gift-wrapped in cobalt paper","categories":["delivery","packaging","gift wrapping"]}
+
+--- SESSION B (mem-b-1792403050) - new session, value NOT repeated
+REQUEST: {"prompt": "Which gift-wrap paper color and delivery spot do I prefer for my orders? Answer from what you already know about me.", "customer_id": "CUST-123", "session_id": "mem-b-1792403050"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 025887b3-92dc-4119-a446-0c917a47a53b                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Hello Jane,
+
+Based on your preferences:
+
+**Gift-wrap paper color:** You prefer all orders to be gift-wrapped in **cobalt
+paper**.
+
+**Delivery spot:** You prefer all delivery orders to be left at the **side 
+gate**.
+
+If you need any changes to these preferences or have other questions, just let 
+me know and I'll be happy to help!
+
+
+RESULT: PASS - session B recalled cobalt
+=== Test 5: loyalty_discount ===
+
+--- session: t5
+REQUEST: {"prompt": "I'm a Gold member with 4250 points. Calculate my loyalty discount for a $200 order of Amazon devices.", "customer_id": "CUST-123", "session_id": "t5"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 562dd40b-f893-4027-9fb1-cde81eb95436                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+Based on your Gold membership status and 4,250 loyalty points, here's your 
+loyalty discount calculation for the $200 Amazon devices order:
+
+**Loyalty Discount Summary:**
+- **Points Redeemed:** 4,000 points ($40 value)
+- **Gold Tier Discount:** 10% ($16.00)
+- **Total Savings:** $56.00
+- **Final Order Total:** $144.00
+- **Points Earned on Purchase:** 288 points
+- **Remaining Points Balance:** 538 points
+
+Your order of Amazon devices will therefore cost **$144.00** after applying 
+both your points redemption and Gold tier discount, saving you a total of 
+**$56.00**.
+
+
+=== Test 6: browser_tool ===
+
+--- session: t6
+REQUEST: {"prompt": "Use the browser to open https://example.com and tell me the page's main heading.", "customer_id": "CUST-123", "session_id": "t6"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 148e40d5-9d95-4586-8c65-df48e75d5aab                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+The main heading text from the page is "Example Domain". This appears to be a 
+simple placeholder page rather than a full website with multiple headings. The 
+page contains the text "This domain is for use in documentation examples 
+without needing permission. This is not a service; avoid relying on it for 
+anything important."
+
+
+(aws) PS C:\MyEnviro\ML\Project2\cd14763-project-starter\starter> 

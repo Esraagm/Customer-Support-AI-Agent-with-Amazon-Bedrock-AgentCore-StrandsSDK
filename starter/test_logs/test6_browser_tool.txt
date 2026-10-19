@@ -1,0 +1,29 @@
+=== Test 6: browser_tool ===
+
+--- session: t6
+REQUEST: {"prompt": "Use the browser to open https://example.com and tell me the page's main heading.", "customer_id": "CUST-123", "session_id": "t6"}
+EXIT CODE: 0
+RESPONSE:
+┌─────────────────────────────────── esraa ───────────────────────────────────┐
+│ Session: a1d1103b-dc2d-4728-a981-307233d1d97d                               │
+│ Request ID: 148e40d5-9d95-4586-8c65-df48e75d5aab                            │
+│ ARN:                                                                        │
+│ arn:aws:bedrock-agentcore:us-east-1:217638960680:runtime/esraa-oUBTfv8UUT   │
+│ Logs: aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --follow               │
+│       aws logs tail                                                         │
+│ /aws/bedrock-agentcore/runtimes/esraa-oUBTfv8UUT-DEFAULT                    │
+│ --log-stream-name-prefix "2026/10/19/[runtime-logs]" --since 1h             │
+│ GenAI Dashboard:                                                            │
+│ https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#gen-ai-obse │
+│ rvability/agent-core                                                        │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Response:
+The main heading text from the page is "Example Domain". This appears to be a 
+simple placeholder page rather than a full website with multiple headings. The 
+page contains the text "This domain is for use in documentation examples 
+without needing permission. This is not a service; avoid relying on it for 
+anything important."
+

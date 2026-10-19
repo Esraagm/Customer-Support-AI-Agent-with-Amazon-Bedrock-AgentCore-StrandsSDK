@@ -1,0 +1,47 @@
+Gateway: https://cs-support-gateway-7kcpqxg4nj.gateway.bedrock-agentcore.us-east-1.amazonaws.com/mcp
+
+=== Registered Gateway tools ===
+- order-tracker___get_customer  schema: {"basePath": {"type": "string"}, "customer_id": {"type": "string"}}
+- order-tracker___get_customer_orders  schema: {"basePath": {"type": "string"}, "customer_id": {"type": "string"}}
+- order-tracker___get_order  schema: {"basePath": {"type": "string"}, "order_id": {"type": "string"}}
+- refund-processor___check_refund_status  schema: {"refund_id": {"description": "Refund ID to check", "type": "string"}}
+- refund-processor___get_return_label  schema: {"order_id": {"description": "Order ID needing a label", "type": "string"}}
+- refund-processor___initiate_refund  schema: {"reason": {"description": "Reason for refund", "type": "string"}, "amount": {"description": "Refund amount in USD", "type": "number"}, "order_id": {"description": "Order ID to refund", "type": "string"}}
+
+=== order-tracker (API Gateway) :: get_order ===
+tool name : order-tracker___get_order
+arguments : {"order_id": "ORD-001"}
+status    : success
+response  : {"order_id":"ORD-001","customer_id":"CUST-123","status":"SHIPPED","items":[{"name":"Wireless Headphones Pro","qty":1,"price":89.99}],"total":89.99,"tracking_number":"TRK987654321","carrier":"UPS","estimated_delivery":"2026-10-21"}
+
+=== order-tracker (API Gateway) :: get_customer_orders ===
+tool name : order-tracker___get_customer_orders
+arguments : {"customer_id": "CUST-123"}
+status    : success
+response  : {"customer_id":"CUST-123","orders":[{"order_id":"ORD-001","customer_id":"CUST-123","status":"SHIPPED","items":[{"name":"Wireless Headphones Pro","qty":1,"price":89.99}],"total":89.99,"tracking_number":"TRK987654321","carrier":"UPS","estimated_delivery":"2026-10-21"},{"order_id":"ORD-002","customer_id":"CUST-123","status":"DELIVERED","items":[{"name":"Kindle Paperwhite","qty":1,"price":139.99}],"total":139.99,"tracking_number":"TRK123456789","carrier":"USPS","delivered_date":"2026-10-16"}]}
+
+=== order-tracker (API Gateway) :: get_customer ===
+tool name : order-tracker___get_customer
+arguments : {"customer_id": "CUST-123"}
+status    : success
+response  : {"name":"Jane Smith","loyalty_points":4250,"tier":"Gold"}
+
+=== refund-processor (Lambda) :: initiate_refund ===
+tool name : refund-processor___initiate_refund
+arguments : {"order_id": "ORD-002", "reason": "Item arrived damaged", "amount": 139.99}
+status    : success
+response  : {"statusCode":200,"body":"{\"refund_id\": \"REF-V2MMW064\", \"order_id\": \"ORD-002\", \"status\": \"APPROVED\", \"amount\": 139.99, \"message\": \"Refund approved. Credit appears in 3-5 business days.\", \"created_at\": \"2026-10-19T09:16:07.182750+00:00\"}"}
+
+=== refund-processor (Lambda) :: check_refund_status ===
+tool name : refund-processor___check_refund_status
+arguments : {"refund_id": "REF-TEST0001"}
+status    : success
+response  : {"statusCode":200,"body":"{\"refund_id\": \"REF-TEST0001\", \"status\": \"PROCESSING\", \"eta\": \"2-3 business days\"}"}
+
+=== refund-processor (Lambda) :: get_return_label ===
+tool name : refund-processor___get_return_label
+arguments : {"order_id": "ORD-002"}
+status    : success
+response  : {"statusCode":200,"body":"{\"order_id\": \"ORD-002\", \"label_url\": \"https://returns.amazon.com/label/ORD-002\", \"carrier\": \"UPS\", \"valid_until\": \"2026-11-18\"}"}
+
+Result: ALL TOOL CALLS SUCCEEDED
